@@ -1,0 +1,103 @@
+/* BG */
+#bg {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  position: absolute; }
+
+body {
+  background-color: transparent; }
+
+.profileImageMain {
+  display: block;
+  margin: -webkit-calc(5vh + 40px) auto 0;
+  margin: -moz-calc(5vh + 40px) auto 0;
+  margin: calc(5vh + 40px) auto 0;
+  border-radius: 100%;
+  position: relative;
+  border: .35em solid #212121;
+  height: 300px;
+  width: 300px; }
+  @media screen and (max-width: 1199px), screen and (max-height: 1199px) {
+    .profileImageMain {
+      height: 275px;
+      width: 275px; } }
+  @media screen and (max-width: 991px), screen and (max-height: 991px) {
+    .profileImageMain {
+      height: 250px;
+      width: 250px; } }
+  @media screen and (max-width: 767px), screen and (max-height: 767px) {
+    .profileImageMain {
+      height: 225px;
+      width: 225px; } }
+  @media screen and (max-width: 600px), screen and (max-height: 600px) {
+    .profileImageMain {
+      height: 200px;
+      width: 200px; } }
+  @media screen and (max-width: 480px), screen and (max-height: 480px) {
+    .profileImageMain {
+      height: 150px;
+      width: 150px; } }
+
+h3.titleHeadline {
+  text-align: center;
+  white-space: nowrap;
+  margin: auto;
+  margin-top: 5vh;
+  overflow: hidden;
+  width: 0%;
+  animation: type 4s 2s forwards steps(60, end); }
+
+h4.smallHealineMain {
+  text-align: center;
+  white-space: nowrap;
+  margin: auto;
+  overflow: hidden;
+  width: 0%;
+  animation: type 4s 3s forwards steps(60, end); }
+  h4.smallHealineMain span {
+    animation: blink 1.5s infinite; }
+
+.dividerDiv {
+  width: 0vw;
+  height: 5px;
+  background-color: #4E5D6C;
+  margin: auto;
+  margin-top: 5vh;
+  animation: dividerDiv 1s ease-in-out 4.5s forwards; }
+
+.mainTitleLinkDiv {
+  color: white;
+  text-align: center;
+  margin: auto;
+  margin-top: 5vh; }
+  .mainTitleLinkDiv a {
+    margin: auto; }
+
+.rowIcons {
+  margin-right: 5vh; }
+
+.boxShadowLight {
+  box-shadow: 0 3px 5px 0 gray; }
+
+@keyframes blink {
+  to {
+    opacity: .0; } }
+@keyframes type {
+  to {
+    width: 100%; } }
+@keyframes type2 {
+  0% {
+    width: 0; }
+  50% {
+    width: 0; }
+  100% {
+    width: 100%; } }
+@keyframes dividerDiv {
+  to {
+    opacity: 1;
+    width: 50vw; } }
+
+/*# sourceMappingURL=main.css.map */
