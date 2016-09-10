@@ -1,6 +1,6 @@
 'use strict';
 var mongoose = require('mongoose');
-var server = process.env.DB || 'mongodb://localhost/mainSite';
+var server = process.env.DB || 'mongodb://localhost/incly';
 mongoose.connect(server, function(err) {
   if (err) {
     console.log("Error Connecting");

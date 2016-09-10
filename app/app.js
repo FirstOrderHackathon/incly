@@ -1,6 +1,6 @@
 'use strict';
 var angular = require('angular');
-angular.module("mainSite", ['ngAnimate']);
+angular.module("incly", ['ngAnimate']);
 //STATE CONFIG
 require('./scripts/config/main.js');
 //CONTROLLERS

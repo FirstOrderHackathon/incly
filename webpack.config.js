@@ -9,7 +9,7 @@ module.exports = {
     },
     output: {
         path: __dirname + '/public/scripts',
-        filename: 'mainSite.bundle.js'
+        filename: 'incly.bundle.js'
     },
     plugins: [
     new webpack.OldWatchingPlugin(),

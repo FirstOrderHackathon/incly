@@ -1,6 +1,6 @@
 'use strict';
-var mainSite = angular.module("mainSite", [require('angular-ui-router')])
-mainSite.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+var incly = angular.module("incly", [require('angular-ui-router')])
+incly.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/');
   $stateProvider
     .state('home', {
@@ -9,4 +9,4 @@ mainSite.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProv
       controller: 'indexCtrl'
     })
 }])
-mainSite.run(['$state', function($state){}]);
+incly.run(['$state', function($state){}]);

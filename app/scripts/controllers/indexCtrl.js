@@ -1,5 +1,5 @@
 'use strict';
-angular.module("mainSite")
+angular.module("incly")
 .controller("indexCtrl", function($scope, $interval) {
 
   // BACKGROUND ANIMATION

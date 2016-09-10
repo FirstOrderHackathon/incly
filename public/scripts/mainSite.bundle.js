@@ -4,7 +4,7 @@ webpackJsonp([0],[
 
 	'use strict';
 	var angular = __webpack_require__(1);
-	angular.module("mainSite", ['ngAnimate']);
+	angular.module("incly", ['ngAnimate']);
 	//STATE CONFIG
 	__webpack_require__(3);
 	//CONTROLLERS
@@ -20,8 +20,8 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var mainSite = angular.module("mainSite", [__webpack_require__(4)])
-	mainSite.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+	var incly = angular.module("incly", [__webpack_require__(4)])
+	incly.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 	  $urlRouterProvider.otherwise('/');
 	  $stateProvider
 	    .state('home', {
@@ -30,7 +30,7 @@ webpackJsonp([0],[
 	      controller: 'indexCtrl'
 	    })
 	}])
-	mainSite.run(['$state', function($state){}]);
+	incly.run(['$state', function($state){}]);
 
 
 /***/ },
@@ -4619,7 +4619,7 @@ webpackJsonp([0],[
 /***/ function(module, exports) {
 
 	'use strict';
-	angular.module("mainSite")
+	angular.module("incly")
 	.controller("indexCtrl", function($scope, $interval) {
 
 	  // BACKGROUND ANIMATION
