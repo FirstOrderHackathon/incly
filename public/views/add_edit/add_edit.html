@@ -8,16 +8,16 @@
             <form class="col s12" >
             <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="username" id="username" type="text" class="validate" ng-model="userLogin.username">
+                        <input placeholder="username"  type="text" class="validate">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="password" id="password" type="password" class="validate" ng-model="userLogin.password">
+                        <input placeholder="password"   class="validate">
                     </div>
                 </div>
-                <a class="btn waves-effect waves-light blue darken-2" type="submit" name="Login" ng-click="login(userLogin)">Login</a>
-                <a class="btn waves-effect waves-light blue lighten-2" name="CNAA" ng-click="signUp(userLogin)">Create New Anonymous Account</a>
+                <a class="btn waves-effect waves-light blue darken-2"  name="Login" ng-click="userLoggedIn = !userLoggedIn">Login</a>
+                <a class="btn waves-effect waves-light blue lighten-2" name="CNAA" ng-click="userLoggedIn = !userLoggedIn">Create New Anonymous Account</a>
             </form>
         </div>
     </div>
@@ -38,47 +38,50 @@
             </div>
             <div class="row">
                 <div class="col s6 offset-s8">
-                    <button class="btn waves-effect waves-light green darken-1" name="Upload" type="submit">Upload</button>
+                    <a class="btn waves-effect waves-light green darken-1"  ng-click="showIt.one = !showIt.one" >Upload</a>
                     <br>
                     <br>
-                    <a class="btn waves-effect waves-light green lighten-1" name="Edit" ng-click="toggleEdit()">Edit Existing File</a>
+                    <a class="btn waves-effect waves-light green lighten-1"  ng-click="showIt.two = !showIt.two">Edit Existing File</a>
                     <br>
                     <br>
-                    <a class="btn waves-effect waves-light grey" name="NewDoc">Write Something New</a>
+                    <a class="btn waves-effect waves-light grey" ng-click="showIt.three = !showIt.three">Write Something New</a>
                 </div>
             </div>
 
     </div>
 </div>
 <!-- This is the text area that will NG-SHOW when the user clicks on the create something new button -->
-<div class="container" ng-show="textForm">
+<div class="container" ng-hide="!showIt.one">
+  <a class="btn waves-effect waves-light red" style="position: relative; right: 10px; top: 10px; margin-top: 20px;" ng-click="showIt.one = !showIt.one">Close</a>
     <div class="card-panel">
         <label>Title</label>
         <input type="text" name="Title">
         <textarea style="height: 200px; resize: none;" name="report" id="report" cols="30" rows="10"></textarea>
         <br>
         <br>
-        <button class="btn waves-effect waves-light green" name="Upload" type="submit">Upload</button>
+        <button class="btn waves-effect waves-light green" >Upload</button>
     </div>
 </div>
 </form>
 
 <!-- Poem -->
-<div class="container" ng-show="newItemCreated">
+<div class="container" ng-hide="!showIt.two">
+  <a class="btn waves-effect waves-light red" style="position: relative; right: 10px; top: 10px; margin-top: 20px;" ng-click="showIt.two = !showIt.two">Close</a>
   <div class="card-panel">
     <label>Title</label>
     <input type="text" name="Title">
     <textarea style="height: 200px;" name="report" id="report" cols="30" rows="10"></textarea>
     <br>
     <br>
-    <button class="btn waves-effect waves-light green" name="Upload" type="submit">Upload</button>
+    <button class="btn waves-effect waves-light green"  >Upload</button>
   </div>
 </div>
 </form>
 
 
 <!-- This is the table that users who have logged in will use to preform CRUD actions -->
-<div class="container"  ng-repeat="data in userHistory track by $index" ng-show="editEnabled">
+<div class="container"  ng-repeat="data in userHistory track by $index" ng-hide="!showIt.three">
+  <a class="btn waves-effect waves-light red" style="position: relative; right: 10px; top: 10px; margin-top: 20px;" ng-click="showIt.three = !showIt.three">Close</a>
   <div class="card-panel">
     <table class="highlight">
             <thead>

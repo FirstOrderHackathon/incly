@@ -14,7 +14,7 @@ module.exports = function(app, connection, passport) {
         console.log(err)
       }
       else if (posts) {
-        res.json({"posts": posts})
+        res.json(posts)
       }
     });
   })
@@ -25,7 +25,7 @@ module.exports = function(app, connection, passport) {
         console.log(err)
       }
       else if (post) {
-        res.json({"post": post})
+        res.json(post)
       }
     });
   })
@@ -35,7 +35,7 @@ module.exports = function(app, connection, passport) {
         console.log(err)
       }
       else if (post) {
-        res.json({"post": post})
+        res.json(post)
       }
     });
   })
@@ -57,7 +57,7 @@ module.exports = function(app, connection, passport) {
 
   app.post('/add', function(req, res) {
     var report = {
-      user: req.user.username
+      // user: req.user.username
     }
 
     req.pipe(req.busboy);
@@ -137,7 +137,7 @@ module.exports = function(app, connection, passport) {
       else if (post) {
         post.remove()
       }
-      res.send({"post": post})
+      res.send(post)
     })
   })
 }

@@ -4644,6 +4644,12 @@ webpackJsonp([0],[
 	'use strict';
 	angular.module("incly")
 	.controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
+	$scope.check = function() {
+	if($scope.showIt.one == true) {}
+	if($scope.showIt.two == true) {}
+		if($scope.showIt.three == true) {}
+	}
+	$scope.showIt = {"one": false, "two": false, "three": false}
 
 		var Toast = {
 		  "loginFailed": "Please try again, an incorrect username and/or password was entered.",
