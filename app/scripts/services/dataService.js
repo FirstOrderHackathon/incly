@@ -7,15 +7,24 @@ angular.module("incly")
   var deleteUrl = "/delete/"; // Delete a Single Item
   var postUrl = "/add"; // Post New Item into the Database
   var getUrlSingleItem = "/post/"; // Single Item Get
+  var getUserForScopeUrl = "";
 
 //Full Database Get
   this.getItems = function(callback) {
     $http.get(getUrl)
       .then(callback)
   };
-  //Single Items CRUD Requests
-  this.saveItem = function(id, product, callback) {
-    $http.put(putUrl + id, product)
+  //Single Users CRUD Requests
+  this.getUser = function(user, callback) {
+    $http.get(getUserForScopeUrl + "/:" + user)
+      .then(callback)
+  };
+  this.newUser = function(user, callback) {
+    $http.post(postUrl, user)
+    .then(callback);
+  };
+  this.saveItem = function(product, id, callback) {
+    $http.post(putUrl + id, product)
       .then(callback)
   };
   this.deleteItem = function(id, callback) {
@@ -23,13 +32,9 @@ angular.module("incly")
     $http.delete(tempUrl)
     .then(callback);
   };
-  this.newItem = function(post, callback) {
-    $http.post(postUrl, post)
+  this.newItem = function(item, callback) {
+    $http.post(postUrl, item)
     .then(callback);
-  };
-  this.getItem = function(callback) {
-    $http.get(getUrlSingleItem)
-      .then(callback)
   };
 
 
