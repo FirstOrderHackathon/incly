@@ -81,7 +81,7 @@ module.exports = function(app, connection, passport) {
       }
       else if (post) {
         if (post.contentUpdate) {
-          post.content = req.body.update;
+          post.report = req.body.update;
         }
         else if (post.deleteImage) {
           post.imageUrl = undefined;
