@@ -1,1 +1,98 @@
-HEy
+<div class="container">
+    <div class="card-panel">
+        <div class="row">
+            
+            <form class="col s12">
+            <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="username" id="username" type="text" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="input-field col s12">
+                        <input placeholder="password" id="password" type="password" class="validate">
+                    </div>
+                </div>
+                <a class="btn waves-effect waves-light blue darken-2" type="submit" name="Login">Login</a>
+                <a class="btn waves-effect waves-light blue lighten-2" name="CNAA">Create New Anonymous Account</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- This code below is for the input view to be activated by NG-SHOW -->
+<div class="container">
+<div class="card-panel">
+
+<form action="#">
+    <div class="file-field input-field">
+      <div class="btn blue darken-2">
+        <span>Select File or Folder</span>
+        <input type="file" multiple>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      </div>
+    </div>
+    <div class="row">
+    <div class="col s6 offset-s7">
+      <a class="btn waves-effect waves-light grey" name="NewDoc">Write Something New</a>
+        <a class="btn waves-effect waves-light green" name="Upload">Upload</a>
+    </div>
+    </div>
+  </form>
+
+  </div>
+  </div>
+
+<!-- This is the text area that will NG-SHOW when the user clicks on the create something new button -->
+
+<div class="container">
+  <div class="card-panel">
+    <label>Title</label>
+    <input type="text" name="Title">
+    <textarea style="height: 200px;" name="report" id="report" cols="30" rows="10"></textarea>
+    <br>
+    <br>
+    <a class="btn waves-effect waves-light green" name="Upload">Upload</a>
+  </div>
+</div>
+
+<!-- This will go on a settings panel activated by NG-SHOW -->
+
+
+<div ui-view class="container"></div>
+
+
+<!-- This is the table that users who have logged in will use to preform CRUD actions -->
+<div class="container">
+<div class="card-panel">
+<table class="highlight">
+        <thead>
+          <tr>
+              <th data-field="fileName">File Name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td colspan="3">MyAwesomeAndReallyReallyReallyLongFileName.Name</td>
+            <td><a class="btn waves-effect waves-light blue lighten-2">Download</a>
+                <a class="btn waves-effect waves-light red">Delete</a>
+                <a class="btn waves-effect waves-light green">Edit</a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">MyAwesomeFileName.Name</td>
+            <td>
+              <a class="btn waves-effect waves-light blue lighten-2">Download</a>
+              <a class="btn waves-effect waves-light red" name="CNAA">Delete</a>
+              <a class="btn waves-effect waves-light green">Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>

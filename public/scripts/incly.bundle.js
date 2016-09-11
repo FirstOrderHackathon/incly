@@ -10,6 +10,7 @@ webpackJsonp([0],[
 	//CONTROLLERS
 	__webpack_require__(5);
 	__webpack_require__(6);
+	__webpack_require__(9);
 	//SERVICE
 	__webpack_require__(7);
 	__webpack_require__(8);
@@ -31,11 +32,21 @@ webpackJsonp([0],[
 	      templateUrl: 'views/view/view.html',
 	      controller: 'indexCtrl'
 	    })
+	    .state('home.settings', {
+	        url: '/settings',
+	        templateUrl: 'views/settings/settings.html',
+	        controller: 'settingsCtrl'
+	      })
 	    .state('add_edit', {
 	      url: '/smile',
 	      templateUrl: 'views/add_edit/add_edit.html',
 	      controller: 'smileCtrl'
 	    })
+	      .state('add_edit.settings', {
+	        url: '/settings',
+	        templateUrl: 'views/settings/settings.html',
+	        controller: 'settingsCtrl'
+	      })
 
 	}])
 	incly.run(['$state', function($state){}]);
@@ -4756,6 +4767,16 @@ webpackJsonp([0],[
 
 
 
+	});
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	'use strict';
+	angular.module("incly")
+	.controller("mainCtrl", function($scope, $interval, encryptionService) {
 	});
 
 
