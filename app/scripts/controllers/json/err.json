@@ -1,0 +1,6 @@
+{
+  "loginFailed": "Please try again, an incorrect username and/or password was entered.",
+  "signupFailed": "The username that was entered already exists, please enter a different username", 
+  "uploadSuccess": "Success", 
+  "uploadFail": "The documents failed to upload, please try again."
+}

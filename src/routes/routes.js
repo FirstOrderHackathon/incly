@@ -46,7 +46,7 @@ module.exports = function(app, connection, passport) {
 
   app.post('/add', function(req, res) {
     var report = {
-      user: req.user.username
+      // user: req.user.username
     }
 
     req.pipe(req.busboy);
@@ -68,6 +68,7 @@ module.exports = function(app, connection, passport) {
           res.send('success');
       });
     })
+    res.json(report)
   })
 
   app.post('/edit/:post', function(req, res) {

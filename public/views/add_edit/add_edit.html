@@ -1,15 +1,13 @@
 <div class="container">
     <div class="card-panel">
         <div class="row">
-            
             <form class="col s12">
-            <div class="row">
+                <div class="row">
                     <div class="input-field col s12">
                         <input placeholder="username" id="username" type="text" class="validate">
                     </div>
                 </div>
                 <div class="row">
-
                     <div class="input-field col s12">
                         <input placeholder="password" id="password" type="password" class="validate">
                     </div>
@@ -17,85 +15,110 @@
                 <a class="btn waves-effect waves-light blue darken-2" type="submit" name="Login">Login</a>
                 <a class="btn waves-effect waves-light blue lighten-2" name="CNAA">Create New Anonymous Account</a>
             </form>
-
         </div>
     </div>
 </div>
-
 <!-- This code below is for the input view to be activated by NG-SHOW -->
 <div class="container">
-<div class="card-panel">
-
-<form action="#">
-    <div class="file-field input-field">
-      <div class="btn blue darken-2">
-        <span>Select File or Folder</span>
-        <input type="file" multiple>
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-      </div>
+    <div class="card-panel">
+        <form action="#">
+            <div class="file-field input-field">
+                <div class="btn blue darken-2">
+                    <span>Select File or Folder</span>
+                    <input type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 offset-s8">
+                    <a class="btn waves-effect waves-light green darken-1" name="Upload">Upload</a>
+                    <br>
+                    <br>
+                    <a class="btn waves-effect waves-light green lighten-1" name="Edit">Edit Existing File</a>
+                    <br>
+                    <br>
+                    <a class="btn waves-effect waves-light grey" name="NewDoc">Write Something New</a>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="row">
-    <div class="col s6 offset-s8">
-      <a class="btn waves-effect waves-light green darken-1" name="Upload">Upload</a>
-      <br><br>
-      <a class="btn waves-effect waves-light green lighten-1" name="Edit">Edit Existing File</a>
-      <br><br>
-      <a class="btn waves-effect waves-light grey" name="NewDoc">Write Something New</a>
-    </div>
-    </div>
-  </form>
-
-  </div>
-  </div>
-
-<!-- This is the text area that will NG-SHOW when the user clicks on the create something new button -->
-
-<div class="container">
-  <div class="card-panel">
-    <label>Title</label>
-    <input type="text" name="Title">
-    <textarea style="height: 200px;" name="report" id="report" cols="30" rows="10"></textarea>
-    <br>
-    <br>
-    <a class="btn waves-effect waves-light green" name="Upload">Upload</a>
-  </div>
 </div>
-
-<!-- This will go on a settings panel activated by NG-SHOW -->
-
-
-<div ui-view class="container"></div>
-
-
+<!-- This is the text area that will NG-SHOW when the user clicks on the create something new button -->
+<div class="container">
+    <div class="card-panel">
+        <label>Title</label>
+        <input type="text" name="Title">
+        <textarea style="height: 200px; resize: none;" name="report" id="report" cols="30" rows="10"></textarea>
+        <br>
+        <br>
+        <a class="btn waves-effect waves-light green" name="Upload">Upload</a>
+    </div>
+</div>
 <!-- This is the table that users who have logged in will use to preform CRUD actions -->
 <div class="container">
-<div class="card-panel">
-<table class="highlight">
-        <thead>
-          <tr>
-              <th data-field="fileName">File Name</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td colspan="3">MyAwesomeAndReallyReallyReallyLongFileName.Name</td>
-            <td><a class="btn waves-effect waves-light blue lighten-2">Download</a>
-                <a class="btn waves-effect waves-light red">Delete</a>
-                <a class="btn waves-effect waves-light green">Edit</a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">MyAwesomeFileName.Name</td>
-            <td>
-              <a class="btn waves-effect waves-light blue lighten-2">Download</a>
-              <a class="btn waves-effect waves-light red" name="CNAA">Delete</a>
-              <a class="btn waves-effect waves-light green">Edit</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-      </div>
+    <div class="card-panel">
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th data-field="fileName">File Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3">MyAwesomeAndReallyReallyReallyLongFileName.Name</td>
+                    <td><a class="btn waves-effect waves-light blue lighten-2">Download</a>
+                        <a class="btn waves-effect waves-light red">Delete</a>
+                        <a class="btn waves-effect waves-light green">Edit</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">MyAwesomeFileName.Name</td>
+                    <td>
+                        <a class="btn waves-effect waves-light blue lighten-2">Download</a>
+                        <a class="btn waves-effect waves-light red" name="CNAA">Delete</a>
+                        <a class="btn waves-effect waves-light green">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Poem -->
+<div class="container">
+    <div class="card-panel blue darken-4 story">
+    <div class="skyscraper"></div>
+    <div  id="ssbg"></div>
+        <div class="container" id="whiteText">
+            <h4 class="textawesome">The origin of skyscrapers</h4>
+            <p class="textawesome">
+                Mother tell me of the birds,
+                <br> how they soar,
+                <br> the summer of their flights
+                <br>
+                <br> They soar because they know the wind,
+                <br> They know his currents
+                <br> and his secret heart
+                <br>
+                <br> Is their song happy?
+                <br> Ever joyful, song on the air
+                <br> Do they seek to conquer?
+                <br> Only themselves
+                <br>
+                <br> And why do they stop short
+                <br> of the city’s towering gates,
+                <br> Is the height too great,
+                <br> the air too thin?
+                <br>
+                <br> They laugh over such a height,
+                <br> but are mindful of their kindred’s
+                <br> fate:
+                <br>
+                <br> Here in the city, birds do not fly;
+                <br> overfed, grounded by their greed,
+                <br> They burrow into the sky
+            </p>
+        </div>
+    </div>
+</div>

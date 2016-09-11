@@ -10,11 +10,10 @@ webpackJsonp([0],[
 	//CONTROLLERS
 	__webpack_require__(5);
 	__webpack_require__(6);
-	__webpack_require__(9);
-	//SERVICE
 	__webpack_require__(7);
+	//SERVICE
 	__webpack_require__(8);
-
+	__webpack_require__(9);
 
 /***/ },
 /* 1 */,
@@ -4640,6 +4639,20 @@ webpackJsonp([0],[
 	'use strict';
 	angular.module("incly")
 	.controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
+
+		var Toast = {
+		  "loginFailed": "Please try again, an incorrect username and/or password was entered.",
+		  "signupFailed": "The username that was entered already exists, please enter a different username", 
+		  "uploadSuccess": "Success", 
+		  "uploadFail": "The documents failed to upload, please try again.", 
+		  "editFail": "Whoops, something went wrong, please try again."
+		}
+
+
+
+		console.log(Toast.uploadFail)
+
+
 	  $scope.newUserCreation = function(inputFromHtmlForUser) {
 	    dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
 	      $scope.user = returnedNewUserJSON;
@@ -4654,6 +4667,9 @@ webpackJsonp([0],[
 
 	$scope.saveFileUploadOrText = function(fileToSave, userId) {
 	  dataService.saveItem(fileToSave, userId, function(returnedUserDataJSON) {
+	  	if (err) {
+
+	  	}
 	    $scope.user = returnedUserDataJSON;
 	  })
 	}
@@ -4669,7 +4685,21 @@ webpackJsonp([0],[
 	    $scope.user = userAfterItemManifestation;
 	  })
 	}
+	console.log(document.getElementsByClassName("toast"))
 
+	  $scope.clickMeMFer = function() {
+	  Materialize.toast(Toast.loginFailed, 4000) // 4000 is the duration of the toast
+		document.getElementsByClassName("toast")[0].style.backgroundColor = "red";
+	  Materialize.toast(Toast.signupFailed, 4000) // 4000 is the duration of the toast
+		document.getElementsByClassName("toast")[0].style.backgroundColor = "red";
+	  Materialize.toast(Toast.uploadSuccess, 4000) // 4000 is the duration of the toast
+	  	document.getElementsByClassName("toast")[0].style.backgroundColor = "green";
+	  Materialize.toast(Toast.editFail, 4000) // 4000 is the duration of the toast
+	  	document.getElementsByClassName("toast")[0].style.backgroundColor = "red";
+	  Materialize.toast(Toast.uploadFail, 4000) // 4000 is the duration of the toast
+	  	document.getElementsByClassName("toast")[0].style.backgroundColor = "red";
+
+	}
 
 	  // Example Encryption
 	    // encryptionService.encryptionOfString("I love Code", function(encryptedString) {
@@ -4707,6 +4737,16 @@ webpackJsonp([0],[
 
 /***/ },
 /* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+	angular.module("incly")
+	.controller("mainCtrl", function($scope, $interval, encryptionService) {
+	});
+
+
+/***/ },
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4768,7 +4808,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4824,16 +4864,6 @@ webpackJsonp([0],[
 	  }
 
 
-	});
-
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	'use strict';
-	angular.module("incly")
-	.controller("mainCtrl", function($scope, $interval, encryptionService) {
 	});
 
 

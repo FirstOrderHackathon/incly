@@ -4,7 +4,7 @@
   "description": "Main site for freelance webdesign",
   "main": "src/server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -25,9 +25,9 @@
     "connect-busboy": "0.0.2",
     "express": "^4.14.0",
     "mongoose": "^4.6.0",
-    "ui-router": "^1.0.0-alpha.3",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "ui-router": "^1.0.0-alpha.3"
   },
   "repository": {
     "type": "git",

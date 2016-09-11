@@ -1,6 +1,20 @@
 'use strict';
 angular.module("incly")
 .controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
+
+	var Toast = {
+	  "loginFailed": "Please try again, an incorrect username and/or password was entered.",
+	  "signupFailed": "The username that was entered already exists, please enter a different username", 
+	  "uploadSuccess": "Success", 
+	  "uploadFail": "The documents failed to upload, please try again.", 
+	  "editFail": "Whoops, something went wrong, please try again."
+	}
+
+
+
+	console.log(Toast.uploadFail)
+
+
   $scope.newUserCreation = function(inputFromHtmlForUser) {
     dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
       $scope.user = returnedNewUserJSON;
@@ -15,6 +29,9 @@ angular.module("incly")
 
 $scope.saveFileUploadOrText = function(fileToSave, userId) {
   dataService.saveItem(fileToSave, userId, function(returnedUserDataJSON) {
+  	if (err) {
+
+  	}
     $scope.user = returnedUserDataJSON;
   })
 }
@@ -30,7 +47,21 @@ $scope.createFile = function(itemToManifest) {
     $scope.user = userAfterItemManifestation;
   })
 }
+console.log(document.getElementsByClassName("toast"))
 
+  $scope.clickMeMFer = function() {
+  Materialize.toast(Toast.loginFailed, 4000) // 4000 is the duration of the toast
+	document.getElementsByClassName("toast")[0].style.backgroundColor = "red";
+  Materialize.toast(Toast.signupFailed, 4000) // 4000 is the duration of the toast
+	document.getElementsByClassName("toast")[0].style.backgroundColor = "red";
+  Materialize.toast(Toast.uploadSuccess, 4000) // 4000 is the duration of the toast
+  	document.getElementsByClassName("toast")[0].style.backgroundColor = "green";
+  Materialize.toast(Toast.editFail, 4000) // 4000 is the duration of the toast
+  	document.getElementsByClassName("toast")[0].style.backgroundColor = "red";
+  Materialize.toast(Toast.uploadFail, 4000) // 4000 is the duration of the toast
+  	document.getElementsByClassName("toast")[0].style.backgroundColor = "red";
+
+}
 
   // Example Encryption
     // encryptionService.encryptionOfString("I love Code", function(encryptedString) {

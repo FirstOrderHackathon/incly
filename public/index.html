@@ -4,17 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>incly</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 
-<body ng-app="incly">
+<body ng-app="incly" ng-controller="mainCtrl">
 
 
     <header ng-include="'views/menu/menu.html'"></header>
 
 	<div ui-view></div>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="/scripts/vendor.bundle.js" charset="utf-8"></script>
     <script src="/scripts/incly.bundle.js" charset="utf-8"></script>
 
