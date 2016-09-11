@@ -7,17 +7,17 @@ this.encryptionOfString = function(stringToEncrypt, callback) {
   for (var x = 0; x < stringToEncrypt.length; x++) {
     let tempLetterInEncryption = "";
 // 32 - 126
-    if (stringToEncrypt.charCodeAt(x) >= 32 || stringToEncrypt.charCodeAt(x) <= 126) {
+    if (stringToEncrypt.charCodeAt(x) >= 32 && stringToEncrypt.charCodeAt(x) <= 126) {
         //set number range (119)
       if (stringToEncrypt.charCodeAt(x) <= 119) {
-        tempLetterInEncryption = String.fromCharCode(stringToEncrypt.charCodeAt(x) + 7)
+        tempLetterInEncryption = stringToEncrypt.charCodeAt(x) + 7;
       }
         //if not in range
       else {
-        tempLetterInEncryption = String.fromCharCode((stringToEncrypt.charCodeAt(x) - 94) + 7)
+        tempLetterInEncryption = (stringToEncrypt.charCodeAt(x) - 94) + 7;
       }
         //compose encrypted
-        outputStringFromEncryption += tempLetterInEncryption;
+        outputStringFromEncryption += String.fromCharCode(tempLetterInEncryption);
     }
   }
   //output
@@ -31,16 +31,16 @@ this.decryptionOfString = function(stringToDecrypt, callback) {
     let tempLetterInDecryption = "";
 // 32 - 126
     if (stringToDecrypt.charCodeAt(x) >= 32 || stringToDecrypt.charCodeAt(x) <= 126) {
-        //set number range (119)
-      if (stringToDecrypt.charCodeAt(x) <= 39 || stringToDecrypt.charCodeAt(x) >= 32) {
-        tempLetterInDecryption = String.fromCharCode((stringToDecrypt.charCodeAt(x) + 94) - 7)
+        //set number range ()
+      if (stringToDecrypt.charCodeAt(x) <= 38 && stringToDecrypt.charCodeAt(x) >= 32) {
+        tempLetterInDecryption = (stringToDecrypt.charCodeAt(x) + 94) - 7;
       }
-        //if not in range
+        //if in range
       else {
-        tempLetterInDecryption = String.fromCharCode(stringToDecrypt.charCodeAt(x) - 7)
+        tempLetterInDecryption = stringToDecrypt.charCodeAt(x) - 7;
       }
         //compose encrypted
-        outputStringFromDecryption += tempLetterInDecryption;
+        outputStringFromDecryption += String.fromCharCode(tempLetterInDecryption);
     }
   }
   //output

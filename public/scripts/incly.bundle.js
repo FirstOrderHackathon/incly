@@ -4621,7 +4621,7 @@ webpackJsonp([0],[
 	'use strict';
 	angular.module("incly")
 	.controller("indexCtrl", function($scope, $interval, encryptionService) {
-	encryptionService.encryptionOfString("dog", function(encryptedString) {
+	encryptionService.encryptionOfString("I love Code", function(encryptedString) {
 	  console.log(encryptedString);
 	  encryptionService.decryptionOfString(encryptedString, function(decryptedString) {
 	    console.log(decryptedString);
@@ -4643,17 +4643,17 @@ webpackJsonp([0],[
 	  for (var x = 0; x < stringToEncrypt.length; x++) {
 	    let tempLetterInEncryption = "";
 	// 32 - 126
-	    if (stringToEncrypt.charCodeAt(x) >= 32 || stringToEncrypt.charCodeAt(x) <= 126) {
+	    if (stringToEncrypt.charCodeAt(x) >= 32 && stringToEncrypt.charCodeAt(x) <= 126) {
 	        //set number range (119)
 	      if (stringToEncrypt.charCodeAt(x) <= 119) {
-	        tempLetterInEncryption = String.fromCharCode(stringToEncrypt.charCodeAt(x) + 7)
+	        tempLetterInEncryption = stringToEncrypt.charCodeAt(x) + 7;
 	      }
 	        //if not in range
 	      else {
-	        tempLetterInEncryption = String.fromCharCode((stringToEncrypt.charCodeAt(x) - 94) + 7)
+	        tempLetterInEncryption = (stringToEncrypt.charCodeAt(x) - 94) + 7;
 	      }
 	        //compose encrypted
-	        outputStringFromEncryption += tempLetterInEncryption;
+	        outputStringFromEncryption += String.fromCharCode(tempLetterInEncryption);
 	    }
 	  }
 	  //output
@@ -4667,16 +4667,16 @@ webpackJsonp([0],[
 	    let tempLetterInDecryption = "";
 	// 32 - 126
 	    if (stringToDecrypt.charCodeAt(x) >= 32 || stringToDecrypt.charCodeAt(x) <= 126) {
-	        //set number range (119)
-	      if (stringToDecrypt.charCodeAt(x) <= 39 || stringToDecrypt.charCodeAt(x) >= 32) {
-	        tempLetterInDecryption = String.fromCharCode((stringToDecrypt.charCodeAt(x) + 94) - 7)
+	        //set number range ()
+	      if (stringToDecrypt.charCodeAt(x) <= 38 && stringToDecrypt.charCodeAt(x) >= 32) {
+	        tempLetterInDecryption = (stringToDecrypt.charCodeAt(x) + 94) - 7;
 	      }
-	        //if not in range
+	        //if in range
 	      else {
-	        tempLetterInDecryption = String.fromCharCode(stringToDecrypt.charCodeAt(x) - 7)
+	        tempLetterInDecryption = stringToDecrypt.charCodeAt(x) - 7;
 	      }
 	        //compose encrypted
-	        outputStringFromDecryption += tempLetterInDecryption;
+	        outputStringFromDecryption += String.fromCharCode(tempLetterInDecryption);
 	    }
 	  }
 	  //output
