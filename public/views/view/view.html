@@ -1,14 +1,15 @@
 <div class="container">
 
     <div class="row">
-        <div class="col s4" ng-repeat="data in databaseLoad track by $index">
+        <div class="col s4" ng-repeat="data in databaseLoad">
+          {{data}}
             <div class="card small">
                 <div class="card-image">
                     <img ng-src="{{data.imageUrl}}">
                 </div>
                 <div class="card-content">
                     <div class="card-stacked">
-                        <p>{{data.content}}</p>
+                        <p>{{data.report}}</p>
                     </div>
                     <div class="card-action">
                         <a href="#">More...</a>
