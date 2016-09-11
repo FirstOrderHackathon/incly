@@ -3,7 +3,8 @@ angular.module("incly")
 .controller("indexCtrl", function($scope, $interval, encryptionService, dataService) {
 
   dataService.getItems(function(databaseLoadForIndex) {
-    $scope.databaseLoad = databaseLoadForIndex;
+    console.log(databaseLoadForIndex);
+    $scope.databaseLoad = databaseLoadForIndex.posts.user;
   })
 
 

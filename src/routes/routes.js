@@ -1,5 +1,4 @@
 var Post = require('../models/Post.js');
-var Img = require('../models/Img.js');
 var User = require('../models/User.js');
 var path = require('path');
 
