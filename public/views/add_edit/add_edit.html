@@ -64,7 +64,7 @@
 
 
 <!-- This is the table that users who have logged in will use to preform CRUD actions -->
-<div class="container"  ng-repeat="data in userHistory track by $index">
+<div class="container"  ng-repeat="data in userHistory track by $index" ng-show="userLoggedIn">
   <div class="card-panel">
     <table class="highlight">
             <thead>

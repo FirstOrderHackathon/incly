@@ -13,6 +13,8 @@ angular.module("incly")
     "imageName": "name"}]
   $scope.newUserCreation = function(inputFromHtmlForUser) {
     dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
+
+        $scope.userLoggedIn = true;
       $scope.user = returnedNewUserJSON;
     })
   }
