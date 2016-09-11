@@ -24,9 +24,19 @@ webpackJsonp([0],[
 	incly.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 	  $urlRouterProvider.otherwise('/');
 	  $stateProvider
-	    .state('home', {
+	    .state('index', {
 	      url: '/',
-	      templateUrl: 'views/main/index.html',
+	      templateUrl: 'index.html',
+	      controller: 'indexCtrl'
+	    })
+	    .state('home', {
+	      url: '/view',
+	      templateUrl: 'views/view/view.html',
+	      controller: 'indexCtrl'
+	    })
+	    .state('add_edit', {
+	      url: '/smile',
+	      templateUrl: 'views/add_edit/add_edit.html',
 	      controller: 'indexCtrl'
 	    })
 	}])
