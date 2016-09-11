@@ -5,17 +5,17 @@
             <form class="col s12">
             <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="username" id="username" type="text" class="validate" ng-model="username">
+                        <input placeholder="username" id="username" type="text" class="validate" ng-model="userLogin.username">
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="input-field col s12">
-                        <input placeholder="password" id="password" type="password" class="validate" ng-model="password">
+                        <input placeholder="password" id="password" type="password" class="validate" ng-model="userLogin.password">
                     </div>
                 </div>
-                <a class="btn waves-effect waves-light blue darken-2" type="submit" name="Login">Login</a>
-                <a class="btn waves-effect waves-light blue lighten-2" name="CNAA">Create New Anonymous Account</a>
+                <a class="btn waves-effect waves-light blue darken-2" type="submit" name="Login" ng-click="login(userLogin)">Login</a>
+                <a class="btn waves-effect waves-light blue lighten-2" name="CNAA" ng-click="signUp(userLogin)">Create New Anonymous Account</a>
             </form>
 
         </div>
@@ -26,11 +26,11 @@
 <div class="container">
 <div class="card-panel">
 
-<form action="#">
+<form action="/add" method="post" enctype="multipart/form-data">
     <div class="file-field input-field">
       <div class="btn blue darken-2">
         <span>Select File or Folder</span>
-        <input type="file" multiple>
+        <input type="file" name="uploadedFile" multiple>
       </div>
       <div class="file-path-wrapper">
         <input class="file-path validate" type="text" placeholder="Upload one or more files">
@@ -38,14 +38,14 @@
     </div>
     <div class="row">
     <div class="col s6 offset-s8">
-      <a class="btn waves-effect waves-light green darken-1" name="Upload">Upload</a>
+      <button class="btn waves-effect waves-light green darken-1" type="submit" name="Upload">Upload</button>
       <br><br>
       <a class="btn waves-effect waves-light green lighten-1" name="Edit">Edit Existing File</a>
       <br><br>
       <a class="btn waves-effect waves-light grey" name="NewDoc">Write Something New</a>
     </div>
     </div>
-  </form>
+
 
   </div>
   </div>
@@ -59,9 +59,10 @@
     <textarea style="height: 200px;" name="report" id="report" cols="30" rows="10"></textarea>
     <br>
     <br>
-    <a class="btn waves-effect waves-light green" name="Upload">Upload</a>
+    <button class="btn waves-effect waves-light green" name="Upload" type="submit">Upload</button>
   </div>
 </div>
+</form>
 
 <!-- This will go on a settings panel activated by NG-SHOW -->
 
@@ -80,21 +81,14 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td colspan="3">MyAwesomeAndReallyReallyReallyLongFileName.Name</td>
-            <td><a class="btn waves-effect waves-light blue lighten-2">Download</a>
-                <a class="btn waves-effect waves-light red">Delete</a>
-                <a class="btn waves-effect waves-light green">Edit</a>
+          <tr ng-repeat="post in userHistory">
+            <td colspan="3">{{post.report.substring(0, 20)}}</td>
+            <td><a class="btn waves-effect waves-light blue lighten-2" ng-click="">Download</a>
+                <a class="btn waves-effect waves-light red" ng-click="">Delete</a>
+                <a class="btn waves-effect waves-light green" ng-click="">Edit</a>
             </td>
           </tr>
-          <tr>
-            <td colspan="3">MyAwesomeFileName.Name</td>
-            <td>
-              <a class="btn waves-effect waves-light blue lighten-2">Download</a>
-              <a class="btn waves-effect waves-light red" name="CNAA">Delete</a>
-              <a class="btn waves-effect waves-light green">Edit</a>
-            </td>
-          </tr>
+
         </tbody>
       </table>
       </div>

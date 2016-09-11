@@ -2,18 +2,28 @@
 angular.module("incly")
 .controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
 
-  $scope.username = '';
-  $scope.password = '';
+  $scope.userLogin = {
+    username: '',
+    password: ''
+  }
 
-  $scope.newUserCreation = function(inputFromHtmlForUser) {
-    dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
-      $scope.user = returnedNewUserJSON;
+
+  // document.getElementById('formUpload').addEventListener('click', function(e) {
+  //   document.getElementById('uploadForm').submit();
+  //   e.preventDefault();
+  // })
+
+
+  $scope.login = function(loginInfo) {
+    dataService.loginUser(loginInfo, function (returnData) {
+      $scope.user = returnData.data;
+      console.log(returnData.data);
     })
   }
 
-  $scope.login = function(loginInfo) {
-    dataService.login(loginInfo, function (returnData) {
-      $scope.user = returnData;
+  $scope.signUp = function(signupInfo) {
+    dataService.newUser(signupInfo, function(data) {
+      $scope.newUser = data.data;
     })
   }
 
@@ -25,11 +35,13 @@ angular.module("incly")
 
   $scope.getUserHistory = function(user) {
     dataService.getUser(user, function(userData) {
-      $scope.userHistory = userData;
+      $scope.userHistory = userData.data;
+      console.log(userData.data);
     })
   }
 
-$scope.saveFileUploadOrText = function(fileToSave, userId) {
+
+$scope.editPost = function(newPost, userId) {
   dataService.saveItem(fileToSave, userId, function(returnedUserDataJSON) {})
 }
 

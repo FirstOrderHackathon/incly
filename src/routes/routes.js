@@ -64,13 +64,13 @@ module.exports = function(app, connection, passport) {
 
       file.pipe(fstream);
       fstream.on('close', function () {
-          res.json(report);
+
       });
     })
 
     req.busboy.on('finish', function() {
       connection.collection('posts').insert(report)
-      res.json(report);
+      res.end();
     })
   })
 
@@ -97,6 +97,9 @@ module.exports = function(app, connection, passport) {
   })
 
   app.post('/signup', function(req, res) {
+    console.log(req.body)
+    res.send(req.body.username);
+
     User.findOne({username: req.body.username}, function(err, doc) {
       console.log(doc);
       if (doc == null) {

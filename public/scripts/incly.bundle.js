@@ -10,10 +10,10 @@ webpackJsonp([0],[
 	//CONTROLLERS
 	__webpack_require__(5);
 	__webpack_require__(6);
-	__webpack_require__(9);
-	//SERVICE
 	__webpack_require__(7);
+	//SERVICE
 	__webpack_require__(8);
+	__webpack_require__(9);
 
 
 /***/ },
@@ -4640,34 +4640,55 @@ webpackJsonp([0],[
 	'use strict';
 	angular.module("incly")
 	.controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
-	  $scope.newUserCreation = function(inputFromHtmlForUser) {
-	    dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
-	      $scope.user = returnedNewUserJSON;
+
+	  $scope.userLogin = {
+	    username: '',
+	    password: ''
+	  }
+
+
+	  // document.getElementById('formUpload').addEventListener('click', function(e) {
+	  //   document.getElementById('uploadForm').submit();
+	  //   e.preventDefault();
+	  // })
+
+
+	  $scope.login = function(loginInfo) {
+	    dataService.loginUser(loginInfo, function (returnData) {
+	      $scope.user = returnData.data;
+	      console.log(returnData.data);
 	    })
 	  }
 
-	  $scope.getUserFromLogin = function(user) {
+	  $scope.signUp = function(signupInfo) {
+	    dataService.newUser(signupInfo, function(data) {
+	      $scope.newUser = data.data;
+	    })
+	  }
+
+	  $scope.getItems = function(itemList) {
+	    dataService.getItems(itemList, function(data) {
+	      $scope.items = data;
+	    })
+	  }
+
+	  $scope.getUserHistory = function(user) {
 	    dataService.getUser(user, function(userData) {
-	      $scope.user = userData;
+	      $scope.userHistory = userData.data;
+	      console.log(userData.data);
 	    })
 	  }
 
 	$scope.saveFileUploadOrText = function(fileToSave, userId) {
-	  dataService.saveItem(fileToSave, userId, function(returnedUserDataJSON) {
-	    $scope.user = returnedUserDataJSON;
-	  })
+	  dataService.saveItem(fileToSave, userId, function(returnedUserDataJSON) {})
 	}
 
 	$scope.deleteFile = function (idForItemToDelete) {
-	  dataService.deleteItem(idForItemToDelete, function(newUserAfterDelete) {
-	    $scope.user = newUserAfterDelete;
-	  })
+	  dataService.deleteItem(idForItemToDelete, function(newUserAfterDelete) {})
 	}
 
 	$scope.createFile = function(itemToManifest) {
-	  dataService.newItem(itemToManifest, function(userAfterItemManifestation) {
-	    $scope.user = userAfterItemManifestation;
-	  })
+	  dataService.newItem(itemToManifest, function(userAfterItemManifestation) {})
 	}
 
 
@@ -4707,6 +4728,16 @@ webpackJsonp([0],[
 
 /***/ },
 /* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+	angular.module("incly")
+	.controller("mainCtrl", function($scope, $interval, encryptionService) {
+	});
+
+
+/***/ },
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4768,7 +4799,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4802,8 +4833,8 @@ webpackJsonp([0],[
 	    .then(callback);
 	  };
 	  // Edit Item
-	  this.saveItem = function(id, callback) {
-	    $http.post(putUrl + "/" + id)
+	  this.saveItem = function(itemToSave, id, callback) {
+	    $http.post(putUrl + "/" + id, itemToSave)
 	      .then(callback)
 	  };
 	  // Delete Items
@@ -4824,16 +4855,6 @@ webpackJsonp([0],[
 	  }
 
 
-	});
-
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	'use strict';
-	angular.module("incly")
-	.controller("mainCtrl", function($scope, $interval, encryptionService) {
 	});
 
 
