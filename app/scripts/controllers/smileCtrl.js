@@ -4,9 +4,9 @@ angular.module("incly")
 
 	var Toast = {
 	  "loginFailed": "Please try again, an incorrect username and/or password was entered.",
-	  "signupFailed": "The username that was entered already exists, please enter a different username", 
-	  "uploadSuccess": "Success", 
-	  "uploadFail": "The documents failed to upload, please try again.", 
+	  "signupFailed": "The username that was entered already exists, please enter a different username",
+	  "uploadSuccess": "Success",
+	  "uploadFail": "The documents failed to upload, please try again.",
 	  "editFail": "Whoops, something went wrong, please try again."
 	}
 
@@ -38,7 +38,11 @@ angular.module("incly")
     })
   }
 
+
+  $scope.userLoggedIn = false;
+  $scope.textForm = false;
   $scope.editEnabled = false;
+  $scope.storyClick = false;
 
   $scope.userLogin = {
     username: '',
@@ -47,7 +51,7 @@ angular.module("incly")
 
   $scope.toggleEdit = function() {
     $scope.editEnabled = !$scope.editEnabled;
-    $scope.userLoggedIn = !$scope.userLoggedIn;
+
   }
 
   $scope.getUserFromLogin = function(user) {

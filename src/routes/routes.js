@@ -70,7 +70,7 @@ module.exports = function(app, connection, passport) {
 
     req.busboy.on('finish', function() {
       connection.collection('posts').insert(report)
-      res.end();
+      res.redirect('back');
     })
   })
 
