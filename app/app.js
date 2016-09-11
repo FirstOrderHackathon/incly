@@ -4,6 +4,7 @@ angular.module("incly", ['ngAnimate']);
 //STATE CONFIG
 require('./scripts/config/main.js');
 //CONTROLLERS
+require('./scripts/controllers/smileCtrl.js');
 require('./scripts/controllers/indexCtrl.js');
 //SERVICE
 require('./scripts/services/encryptionService.js');

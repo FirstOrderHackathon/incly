@@ -8,5 +8,11 @@ incly.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
       templateUrl: 'views/main/index.html',
       controller: 'indexCtrl'
     })
+
+    .state('smile', {
+      url: '/smile',
+      templateUrl: 'views/main/index.html',
+      controller: 'smileCtrl'
+    })
 }])
 incly.run(['$state', function($state){}]);
