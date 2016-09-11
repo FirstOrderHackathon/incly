@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var postSchema = mongoose.Schema  ({
   user: String,
-  content: String,
+  report: String,
   voteCount: Number,
   imageUrl: String
 

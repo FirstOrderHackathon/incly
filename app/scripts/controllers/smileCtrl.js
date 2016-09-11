@@ -1,34 +1,35 @@
 'use strict';
 angular.module("incly")
 .controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
+
   $scope.newUserCreation = function(inputFromHtmlForUser) {
     dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
       $scope.user = returnedNewUserJSON;
     })
   }
 
-  $scope.getUserFromLogin = function(user) {
+  $scope.login = function(loginInfo) {
+    dataService.login(loginInfo, function (returnData) {
+      $scope.user = returnData;
+    })
+  }
+
+  $scope.getUserHistory = function(user) {
     dataService.getUser(user, function(userData) {
-      $scope.user = userData;
+      $scope.userHistory = userData;
     })
   }
 
 $scope.saveFileUploadOrText = function(fileToSave, userId) {
-  dataService.saveItem(fileToSave, userId, function(returnedUserDataJSON) {
-    $scope.user = returnedUserDataJSON;
-  })
+  dataService.saveItem(fileToSave, userId, function(returnedUserDataJSON) {})
 }
 
 $scope.deleteFile = function (idForItemToDelete) {
-  dataService.deleteItem(idForItemToDelete, function(newUserAfterDelete) {
-    $scope.user = newUserAfterDelete;
-  })
+  dataService.deleteItem(idForItemToDelete, function(newUserAfterDelete) {})
 }
 
 $scope.createFile = function(itemToManifest) {
-  dataService.newItem(itemToManifest, function(userAfterItemManifestation) {
-    $scope.user = userAfterItemManifestation;
-  })
+  dataService.newItem(itemToManifest, function(userAfterItemManifestation) {})
 }
 
 

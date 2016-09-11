@@ -29,8 +29,8 @@ angular.module("incly")
     .then(callback);
   };
   // Edit Item
-  this.saveItem = function(id, callback) {
-    $http.post(putUrl + "/" + id)
+  this.saveItem = function(itemToSave, id, callback) {
+    $http.post(putUrl + "/" + id, itemToSave)
       .then(callback)
   };
   // Delete Items

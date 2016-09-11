@@ -1,6 +1,7 @@
 var Post = require('../models/Post.js');
 var User = require('../models/User.js');
 var path = require('path');
+var fs = require('fs');
 
 module.exports = function(app, connection, passport) {
   app.get('/', function(req, res) {
@@ -46,7 +47,7 @@ module.exports = function(app, connection, passport) {
 
   app.post('/add', function(req, res) {
     var report = {
-      user: req.user.username
+      // user: req.user.username
     }
 
     req.pipe(req.busboy);
@@ -57,16 +58,19 @@ module.exports = function(app, connection, passport) {
 
     req.busboy.on('file', function(fieldname, file, filename) {
 
-      var location = __dirname + '/uploads/' + filename;
-      fstream = fs.createWriteStream(location);
+      var location = '../../src/uploads/routes/uploads/' + filename;
+      var fstream = fs.createWriteStream(__dirname + '/uploads/' + filename);
       report.imageUrl = location;
-
-      connection.colleciton('posts').insert(report)
 
       file.pipe(fstream);
       fstream.on('close', function () {
-          res.send('success');
+          res.json(report);
       });
+    })
+
+    req.busboy.on('finish', function() {
+      connection.collection('posts').insert(report)
+      res.json(report);
     })
   })
 
