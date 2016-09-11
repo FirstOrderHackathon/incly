@@ -47,7 +47,7 @@ module.exports = function(app, connection, passport) {
 
   app.post('/add', function(req, res) {
     var report = {
-      // user: req.user.username
+      user: req.user.username
     }
 
     req.pipe(req.busboy);

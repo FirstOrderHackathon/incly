@@ -11,12 +11,32 @@ angular.module("incly")
     "voteCount": 5,
     "imageUrl": "String",
     "imageName": "name"}]
-  $scope.newUserCreation = function(inputFromHtmlForUser) {
-    dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
 
+
+  $scope.signUp = function(loginData) {
+    dataService.newUser(loginData, function (data) {
         $scope.userLoggedIn = true;
-      $scope.user = returnedNewUserJSON;
+        $scope.user = data;
     })
+  }
+
+  $scope.login = function(loginData) {
+    dataService.loginUser(loginData, function (data) {
+      $scope.userLoggedIn = true;
+      $scope.user = data
+    })
+  }
+
+  $scope.editEnabled = false;
+
+  $scope.userLogin = {
+    username: '',
+    password: ''
+  }
+
+  $scope.toggleEdit = function() {
+    $scope.editEnabled = !$scope.editEnabled;
+    $scope.userLoggedIn = !$scope.userLoggedIn;
   }
 
   $scope.getUserFromLogin = function(user) {

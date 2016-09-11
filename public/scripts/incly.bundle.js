@@ -4650,10 +4650,31 @@ webpackJsonp([0],[
 	    "voteCount": 5,
 	    "imageUrl": "String",
 	    "imageName": "name"}]
-	  $scope.newUserCreation = function(inputFromHtmlForUser) {
-	    dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
-	      $scope.user = returnedNewUserJSON;
+
+
+	  $scope.signUp = function(loginData) {
+	    dataService.newUser(loginData, function (data) {
+	        $scope.userLoggedIn = true;
+	        $scope.user = data;
 	    })
+	  }
+
+	  $scope.login = function(loginData) {
+	    dataService.loginUser(loginData, function (data) {
+	      $scope.userLoggedIn = true;
+	      $scope.user = data
+	    })
+	  }
+
+	  $scope.editEnabled = false;
+
+	  $scope.userLogin = {
+	    username: '',
+	    password: ''
+	  }
+
+	  $scope.toggleEdit = function() {
+	    $scope.editEnabled = !$scope.editEnabled;
 	  }
 
 	  $scope.getUserFromLogin = function(user) {
@@ -4825,8 +4846,8 @@ webpackJsonp([0],[
 	    .then(callback);
 	  };
 	  // Edit Item
-	  this.saveItem = function(id, callback) {
-	    $http.post(putUrl + "/" + id)
+	  this.saveItem = function(itemToSave, id, callback) {
+	    $http.post(putUrl + "/" + id, itemToSave)
 	      .then(callback)
 	  };
 	  // Delete Items
