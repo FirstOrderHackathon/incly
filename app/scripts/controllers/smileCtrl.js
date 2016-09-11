@@ -2,6 +2,9 @@
 angular.module("incly")
 .controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
 
+  $scope.username = '';
+  $scope.password = '';
+
   $scope.newUserCreation = function(inputFromHtmlForUser) {
     dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
       $scope.user = returnedNewUserJSON;
@@ -11,6 +14,12 @@ angular.module("incly")
   $scope.login = function(loginInfo) {
     dataService.login(loginInfo, function (returnData) {
       $scope.user = returnData;
+    })
+  }
+
+  $scope.getItems = function(itemList) {
+    dataService.getItems(itemList, function(data) {
+      $scope.items = data;
     })
   }
 
