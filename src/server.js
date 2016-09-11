@@ -11,9 +11,6 @@ var path = require('path');
 
 var port = process.env.PORT || 8080;
 
-// console.log(dbInfo.url)
-// mongoose.connect(dbInfo.url);
-
 mongoose.connect('mongodb://localhost:27017/incly');
 var connection = mongoose.connection;
 
