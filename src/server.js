@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var morgan = require('morgan');
 var mongoose = require('mongoose');
-var routes = require('./src/routes/routes.js');
+var routes = require('./routes/routes.js');
 var dbInfo = require('./dbInfo.js');
 
 var port = process.env.PORT || 8080;

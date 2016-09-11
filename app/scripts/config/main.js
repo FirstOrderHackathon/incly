@@ -5,14 +5,14 @@ incly.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'views/main/index.html',
+      templateUrl: 'views/view/view.html',
       controller: 'indexCtrl'
     })
-
-    .state('smile', {
+    .state('add_edit', {
       url: '/smile',
-      templateUrl: 'views/main/index.html',
+      templateUrl: 'views/add_edit/add_edit.html',
       controller: 'smileCtrl'
     })
+
 }])
 incly.run(['$state', function($state){}]);

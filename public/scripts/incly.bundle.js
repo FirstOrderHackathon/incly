@@ -8,11 +8,11 @@ webpackJsonp([0],[
 	//STATE CONFIG
 	__webpack_require__(3);
 	//CONTROLLERS
-	__webpack_require__(9);
 	__webpack_require__(5);
-	//SERVICE
 	__webpack_require__(6);
+	//SERVICE
 	__webpack_require__(7);
+	__webpack_require__(8);
 
 
 /***/ },
@@ -28,15 +28,15 @@ webpackJsonp([0],[
 	  $stateProvider
 	    .state('home', {
 	      url: '/',
-	      templateUrl: 'views/main/index.html',
+	      templateUrl: 'views/view/view.html',
 	      controller: 'indexCtrl'
 	    })
-
-	    .state('smile', {
+	    .state('add_edit', {
 	      url: '/smile',
-	      templateUrl: 'views/main/index.html',
+	      templateUrl: 'views/add_edit/add_edit.html',
 	      controller: 'smileCtrl'
 	    })
+
 	}])
 	incly.run(['$state', function($state){}]);
 
@@ -4628,6 +4628,22 @@ webpackJsonp([0],[
 
 	'use strict';
 	angular.module("incly")
+	.controller("smileCtrl", function($scope, $interval, encryptionService) {
+	encryptionService.encryptionOfString("I love Code", function(encryptedString) {
+	  console.log(encryptedString);
+	  encryptionService.decryptionOfString(encryptedString, function(decryptedString) {
+	    console.log(decryptedString);
+	  })
+	});
+	});
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	'use strict';
+	angular.module("incly")
 	.controller("indexCtrl", function($scope, $interval, encryptionService) {
 	  encryptionService.encryptionOfString("I love Code", function(encryptedString) {
 	    console.log(encryptedString);
@@ -4639,7 +4655,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4701,7 +4717,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4740,23 +4756,6 @@ webpackJsonp([0],[
 
 
 
-	});
-
-
-/***/ },
-/* 8 */,
-/* 9 */
-/***/ function(module, exports) {
-
-	'use strict';
-	angular.module("incly")
-	.controller("smileCtrl", function($scope, $interval, encryptionService) {
-	encryptionService.encryptionOfString("I love Code", function(encryptedString) {
-	  console.log(encryptedString);
-	  encryptionService.decryptionOfString(encryptedString, function(decryptedString) {
-	    console.log(decryptedString);
-	  })
-	});
 	});
 
 
