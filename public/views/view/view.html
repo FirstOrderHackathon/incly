@@ -1,48 +1,15 @@
 <div class="container">
 
     <div class="row">
-        <div class="col s4">
+        <div class="col s4" ng-repeat="data in databaseLoad track by $index">
             <div class="card small">
+              {{data}}
                 <div class="card-image">
                     <img ng-src="{{data.imageUrl}}">
                 </div>
                 <div class="card-content">
                     <div class="card-stacked">
                         <p>{{data.content}}</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">More...</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col s4">
-            <div class="card small">
-                <div class="card-image">
-                    <img src="http://gurumavin.com/wp-content/uploads/2016/04/secret_file.png">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <p>This is where the title of the report will go</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">More...</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col s4">
-            <div class="card small">
-                <div class="card-image">
-                    <img src="http://gurumavin.com/wp-content/uploads/2016/04/secret_file.png">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <p>This is where the title of the report will go</p>
                     </div>
                     <div class="card-action">
                         <a href="#">More...</a>
