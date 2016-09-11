@@ -24,5 +24,10 @@ incly.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvide
         controller: 'settingsCtrl'
       })
 
+        .state('story', {
+          url: '/story',
+          templateUrl: 'views/view/story.html',
+          controller: 'indexCtrl'
+        })
 }])
 incly.run(['$state', function($state){}]);

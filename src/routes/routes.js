@@ -121,10 +121,10 @@ module.exports = function(app, connection, passport) {
           username: req.body.username,
           password: req.body.password
         });
-        res.json(user);
+        res.json({"user": user});
       }
       else {
-        res.send('Username taken');
+        res.send({"err":'Username taken'});
       }
     })
   })

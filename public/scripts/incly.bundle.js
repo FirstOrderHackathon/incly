@@ -47,6 +47,11 @@ webpackJsonp([0],[
 	        controller: 'settingsCtrl'
 	      })
 
+	        .state('story', {
+	          url: '/story',
+	          templateUrl: 'views/view/story.html',
+	          controller: 'indexCtrl'
+	        })
 	}])
 	incly.run(['$state', function($state){}]);
 
