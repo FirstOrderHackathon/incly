@@ -62,5 +62,10 @@
 	border-radius: 40%
 }
 
-
-
+#navSticky {
+	position: fixed; !important;
+	top: 0;
+	right: 0;
+	position: fixed;
+	z-index: 100;
+}
