@@ -2,11 +2,11 @@
 angular.module("incly")
 .service("dataService", function($http, $q) {
 
-  var getUrl = ""; // Get a List of Items in the Database
-  var putUrl = ""; // Save a Individual List
-  var deleteUrl = ""; // Delete a Single Item
-  var postUrl = ""; // Post New Item into the Database
-  var getUrlSingleItem = ""; // Single Item Get
+  var getUrl = "/posts"; // Get a List of Items in the Database
+  var putUrl = "/edit/"; // Save a Individual List
+  var deleteUrl = "/delete/"; // Delete a Single Item
+  var postUrl = "/add"; // Post New Item into the Database
+  var getUrlSingleItem = "/post/"; // Single Item Get
 
 //Full Database Get
   this.getItems = function(callback) {
