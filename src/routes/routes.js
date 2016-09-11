@@ -67,15 +67,11 @@ module.exports = function(app, connection, passport) {
 
       });
     })
-<<<<<<< HEAD
-    res.json(report)
-=======
 
     req.busboy.on('finish', function() {
       connection.collection('posts').insert(report)
       res.end();
     })
->>>>>>> 7a667fdf2e39b138668a3d2757d2238cd8a2a670
   })
 
   app.post('/edit/:post', function(req, res) {
