@@ -22,9 +22,12 @@
     "angular": "^1.5.8",
     "angular-ui-router": "^0.3.1",
     "body-parser": "^1.15.2",
+    "connect-busboy": "0.0.2",
     "express": "^4.14.0",
     "mongoose": "^4.6.0",
-    "ui-router": "^1.0.0-alpha.3"
+    "ui-router": "^1.0.0-alpha.3",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "repository": {
     "type": "git",
