@@ -3,7 +3,6 @@
     <div class="row">
         <div class="col s4" ng-repeat="data in databaseLoad track by $index">
             <div class="card small">
-              {{data}}
                 <div class="card-image">
                     <img ng-src="{{data.imageUrl}}">
                 </div>
@@ -20,4 +19,13 @@
     </div>
 
 
+</div>
+
+<div class="container">
+    <div class="card-panel">
+        <h2>This is the report heading...</h2>
+        <br><br>
+        <p>this is the report...</p>
+        <img ng-src="{{data.imageUrl}}">
+    </div>
 </div>
