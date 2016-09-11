@@ -53,6 +53,10 @@
 	opacity: 1;
 	display: block;
 }
-
-
-
+#navSticky {
+	position: fixed; !important;
+	top: 0;
+	right: 0;
+	position: fixed;
+	z-index: 100;
+}
