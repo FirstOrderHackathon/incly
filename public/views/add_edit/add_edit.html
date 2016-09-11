@@ -1,8 +1,7 @@
 <div class="container">
-    <div class="card-panel">
+    <div class="card-panel" ng-hide="userLoggedIn">
         <div class="row">
-            
-            <form class="col s12">
+            <form class="col s12" >
             <div class="row">
                     <div class="input-field col s12">
                         <input placeholder="username" id="username" type="text" class="validate">
@@ -23,36 +22,36 @@
 </div>
 
 <!-- This code below is for the input view to be activated by NG-SHOW -->
-<div class="container">
-<div class="card-panel">
+<div class="container" ng-show="userLoggedIn">
+  <div class="card-panel">
 
-<form action="#">
-    <div class="file-field input-field">
-      <div class="btn blue darken-2">
-        <span>Select File or Folder</span>
-        <input type="file" multiple>
+  <form action="#">
+      <div class="file-field input-field">
+        <div class="btn blue darken-2">
+          <span>Select File or Folder</span>
+          <input type="file" multiple>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Upload one or more files">
+        </div>
       </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+      <div class="row">
+      <div class="col s6 offset-s8">
+        <a class="btn waves-effect waves-light green darken-1" name="Upload">Upload</a>
+        <br><br>
+        <a class="btn waves-effect waves-light green lighten-1" name="Edit">Edit Existing File</a>
+        <br><br>
+        <a class="btn waves-effect waves-light grey" name="NewDoc">Write Something New</a>
       </div>
-    </div>
-    <div class="row">
-    <div class="col s6 offset-s8">
-      <a class="btn waves-effect waves-light green darken-1" name="Upload">Upload</a>
-      <br><br>
-      <a class="btn waves-effect waves-light green lighten-1" name="Edit">Edit Existing File</a>
-      <br><br>
-      <a class="btn waves-effect waves-light grey" name="NewDoc">Write Something New</a>
-    </div>
-    </div>
-  </form>
+      </div>
+    </form>
 
-  </div>
+    </div>
   </div>
 
 <!-- This is the text area that will NG-SHOW when the user clicks on the create something new button -->
 
-<div class="container">
+<div class="container" ng-show="newItemCreated">
   <div class="card-panel">
     <label>Title</label>
     <input type="text" name="Title">
@@ -63,39 +62,30 @@
   </div>
 </div>
 
-<!-- This will go on a settings panel activated by NG-SHOW -->
-
-
-<div ui-view class="container"></div>
-
 
 <!-- This is the table that users who have logged in will use to preform CRUD actions -->
-<div class="container">
-<div class="card-panel">
-<table class="highlight">
-        <thead>
-          <tr>
-              <th data-field="fileName">File Name</th>
-          </tr>
-        </thead>
+<div class="container"  ng-repeat="data in userHistory track by $index">
+  <div class="card-panel">
+    <table class="highlight">
+            <thead>
+              <tr>
+                  <th data-field="fileName">{{data.imageName}}</th>
+              </tr>
+            </thead>
 
-        <tbody>
-          <tr>
-            <td colspan="3">MyAwesomeAndReallyReallyReallyLongFileName.Name</td>
-            <td><a class="btn waves-effect waves-light blue lighten-2">Download</a>
-                <a class="btn waves-effect waves-light red">Delete</a>
-                <a class="btn waves-effect waves-light green">Edit</a>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">MyAwesomeFileName.Name</td>
-            <td>
-              <a class="btn waves-effect waves-light blue lighten-2">Download</a>
-              <a class="btn waves-effect waves-light red" name="CNAA">Delete</a>
-              <a class="btn waves-effect waves-light green">Edit</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
+            <tbody>
+              <tr>
+                <td colspan="3">{{data.content}}</td>
+              </tr>
+              <tr>
+                <td colspan="3">{{data.imageUrl}}</td>
+                <td>
+                  <a class="btn waves-effect waves-light blue lighten-2">Download</a>
+                  <a class="btn waves-effect waves-light red" name="CNAA">Delete</a>
+                  <a class="btn waves-effect waves-light green">Edit</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>

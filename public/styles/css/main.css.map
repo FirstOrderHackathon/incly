@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,UAAW;EACT,UAAU,EAAE,eAAe",
+"sources": ["../scss/mainView/_background.scss"],
 "names": [],
 "file": "main.css"
 }

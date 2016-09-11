@@ -4,7 +4,8 @@ var postSchema = mongoose.Schema  ({
   user: String,
   content: String,
   voteCount: Number,
-  imageUrl: String
+  imageUrl: String,
+  imageName: String
 
 }, { collection: 'posts' } );
 

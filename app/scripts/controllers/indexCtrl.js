@@ -4,7 +4,7 @@ angular.module("incly")
 
   dataService.getItems(function(databaseLoadForIndex) {
     console.log(databaseLoadForIndex);
-    $scope.databaseLoad = databaseLoadForIndex.posts.user;
+    $scope.databaseLoad = databaseLoadForIndex;
   })
 
 

@@ -1,6 +1,16 @@
 'use strict';
 angular.module("incly")
 .controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
+  $scope.userLoggedIn = false;
+  // TODO: ADD TRUE TO LOGGED IN UsER
+  $scope.newItemCreated = false;
+  // TODO: ADD TRUE TO NEW ITEM
+  $scope.userHistory = [{
+    "user": "bob",
+    "content": "123",
+    "voteCount": 5,
+    "imageUrl": "String",
+    "imageName": "name"}]
   $scope.newUserCreation = function(inputFromHtmlForUser) {
     dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
       $scope.user = returnedNewUserJSON;

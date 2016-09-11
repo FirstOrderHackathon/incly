@@ -10,10 +10,10 @@ webpackJsonp([0],[
 	//CONTROLLERS
 	__webpack_require__(5);
 	__webpack_require__(6);
-	__webpack_require__(9);
-	//SERVICE
 	__webpack_require__(7);
+	//SERVICE
 	__webpack_require__(8);
+	__webpack_require__(9);
 
 
 /***/ },
@@ -4640,6 +4640,16 @@ webpackJsonp([0],[
 	'use strict';
 	angular.module("incly")
 	.controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
+	  $scope.userLoggedIn = false;
+	  // TODO: ADD TRUE TO LOGGED IN UsER
+	  $scope.newItemCreated = false;
+	  // TODO: ADD TRUE TO NEW ITEM
+	  $scope.userHistory = [{
+	    "user": "bob",
+	    "content": "123",
+	    "voteCount": 5,
+	    "imageUrl": "String",
+	    "imageName": "name"}]
 	  $scope.newUserCreation = function(inputFromHtmlForUser) {
 	    dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
 	      $scope.user = returnedNewUserJSON;
@@ -4691,7 +4701,7 @@ webpackJsonp([0],[
 
 	  dataService.getItems(function(databaseLoadForIndex) {
 	    console.log(databaseLoadForIndex);
-	    $scope.databaseLoad = databaseLoadForIndex.posts.user;
+	    $scope.databaseLoad = databaseLoadForIndex;
 	  })
 
 
@@ -4707,6 +4717,19 @@ webpackJsonp([0],[
 
 /***/ },
 /* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+	angular.module("incly")
+	.controller("mainCtrl", function($scope, $interval, $location, encryptionService) {
+	    $scope.isActive = function(route) {
+	        return route === $location.path();
+	    }
+	});
+
+
+/***/ },
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4768,7 +4791,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4824,16 +4847,6 @@ webpackJsonp([0],[
 	  }
 
 
-	});
-
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	'use strict';
-	angular.module("incly")
-	.controller("mainCtrl", function($scope, $interval, encryptionService) {
 	});
 
 
