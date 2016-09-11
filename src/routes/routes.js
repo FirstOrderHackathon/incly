@@ -1,4 +1,5 @@
 var Post = require('../models/Post.js');
+var Img = require('../models/Img.js');
 var User = require('../models/User.js');
 var path = require('path');
 
@@ -29,30 +30,46 @@ module.exports = function(app, connection, passport) {
     });
   })
 
+  app.get('/userHistory/:user', function(req, res) {
+    Post.find({username: req.params.user}, function(err, data) {
+      if (err) {
+        console.log(err)
+      }
+      else if (data) {
+        res.send(data);
+      }
+    })
+  })
+
   app.post('/login', passport.authenticate('local'), function(req, res) {
     res.json(req.user);
   })
 
   app.post('/add', function(req, res) {
-    var post = {
-      content: req.body.content
+    var report = {
+      user: req.user.username
     }
 
-    connection.collection('posts').insert(post);
-    res.json(post)
-  })
-
-  app.post('/upload', function(req, res) {
     req.pipe(req.busboy);
+
+    req.busboy.on('field', function(fieldname, val) {
+      report.report = val;
+    });
+
     req.busboy.on('file', function(fieldname, file, filename) {
 
-      fstream = fs.createWriteStream('../uploads/' + filename);
+      var location = __dirname + '/uploads/' + filename;
+      fstream = fs.createWriteStream(location);
+      report.imageUrl = location;
+
+      connection.colleciton('posts').insert(report)
+
       file.pipe(fstream);
       fstream.on('close', function () {
           res.send('success');
       });
     })
-})
+  })
 
   app.post('/edit/:post', function(req, res) {
     Post.findById(req.params.post, function(err, post) {
@@ -60,7 +77,12 @@ module.exports = function(app, connection, passport) {
         console.log(err)
       }
       else if (post) {
-        post.content = req.body.update;
+        if (post.contentUpdate) {
+          post.content = req.body.update;
+        }
+        else if (post.deleteImage) {
+          post.imageUrl = undefined;
+        }
         post.save(function (err, updatedPost) {
           if (err) {
             console.log(err)
