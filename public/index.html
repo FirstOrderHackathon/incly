@@ -7,21 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 </head>
 
-<body>
+<body ng-app="incly">
 
-    <nav>
-        <div class="nav-wrapper blue darken-4">
-            <a href="#" class="brand-logo center">incly</a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a ui-sref="home">View</a></li>
-                <li><a ui-sref="add_edit">Add/Edit</a></li>
-            </ul>
-        </div>
-    </nav>
+
+    <header ng-include="'views/menu/menu.html'"></header>
 
 	<div ui-view></div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
     <script src="/scripts/vendor.bundle.js" charset="utf-8"></script>
     <script src="/scripts/incly.bundle.js" charset="utf-8"></script>
 
