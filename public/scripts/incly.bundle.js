@@ -10,7 +10,8 @@ webpackJsonp([0],[
 	//CONTROLLERS
 	__webpack_require__(5);
 	//SERVICE
-	// require('./scripts/services/timerService.js');
+	__webpack_require__(6);
+	__webpack_require__(7);
 
 
 /***/ },
@@ -4620,7 +4621,118 @@ webpackJsonp([0],[
 
 	'use strict';
 	angular.module("incly")
-	.controller("indexCtrl", function($scope, $interval) {
+	.controller("indexCtrl", function($scope, $interval, encryptionService) {
+	encryptionService.encryptionOfString("I love Code", function(encryptedString) {
+	  console.log(encryptedString);
+	  encryptionService.decryptionOfString(encryptedString, function(decryptedString) {
+	    console.log(decryptedString);
+	  })
+	});
+	});
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	'use strict';
+	angular.module("incly")
+	.service("encryptionService", function() {
+
+	this.encryptionOfString = function(stringToEncrypt, callback) {
+	  let outputStringFromEncryption = "";
+	  for (var x = 0; x < stringToEncrypt.length; x++) {
+	    let tempLetterInEncryption = "";
+	// 32 - 126
+	    if (stringToEncrypt.charCodeAt(x) >= 32 && stringToEncrypt.charCodeAt(x) <= 126) {
+	        //set number range (119)
+	      if (stringToEncrypt.charCodeAt(x) <= 119) {
+	        tempLetterInEncryption = stringToEncrypt.charCodeAt(x) + 7;
+	      }
+	        //if not in range
+	      else {
+	        tempLetterInEncryption = (stringToEncrypt.charCodeAt(x) - 94) + 7;
+	      }
+	        //compose encrypted
+	        outputStringFromEncryption += String.fromCharCode(tempLetterInEncryption);
+	    }
+	  }
+	  //output
+	  callback(outputStringFromEncryption)
+	}
+
+
+	this.decryptionOfString = function(stringToDecrypt, callback) {
+	  let outputStringFromDecryption = "";
+	  for (var x = 0; x < stringToDecrypt.length; x++) {
+	    let tempLetterInDecryption = "";
+	// 32 - 126
+	    if (stringToDecrypt.charCodeAt(x) >= 32 || stringToDecrypt.charCodeAt(x) <= 126) {
+	        //set number range ()
+	      if (stringToDecrypt.charCodeAt(x) <= 38 && stringToDecrypt.charCodeAt(x) >= 32) {
+	        tempLetterInDecryption = (stringToDecrypt.charCodeAt(x) + 94) - 7;
+	      }
+	        //if in range
+	      else {
+	        tempLetterInDecryption = stringToDecrypt.charCodeAt(x) - 7;
+	      }
+	        //compose encrypted
+	        outputStringFromDecryption += String.fromCharCode(tempLetterInDecryption);
+	    }
+	  }
+	  //output
+	  callback(outputStringFromDecryption)
+	}
+
+
+
+
+
+
+
+	});
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+	angular.module("incly")
+	.service("dataService", function($http, $q) {
+
+	  var getUrl = ""; // Get a List of Items in the Database
+	  var putUrl = ""; // Save a Individual List
+	  var deleteUrl = ""; // Delete a Single Item
+	  var postUrl = ""; // Post New Item into the Database
+	  var getUrlSingleItem = ""; // Single Item Get
+
+	//Full Database Get
+	  this.getItems = function(callback) {
+	    $http.get(getUrl)
+	      .then(callback)
+	  };
+	  //Single Items CRUD Requests
+	  this.saveItem = function(id, product, callback) {
+	    $http.put(putUrl + id, product)
+	      .then(callback)
+	  };
+	  this.deleteItem = function(id, callback) {
+	    var tempUrl = deleteUrl + id;
+	    $http.delete(tempUrl)
+	    .then(callback);
+	  };
+	  this.newItem = function(post, callback) {
+	    $http.post(postUrl, post)
+	    .then(callback);
+	  };
+	  this.getItem = function(callback) {
+	    $http.get(getUrlSingleItem)
+	      .then(callback)
+	  };
+
+
+
 	});
 
 

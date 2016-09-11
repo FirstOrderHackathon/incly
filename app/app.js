@@ -6,4 +6,5 @@ require('./scripts/config/main.js');
 //CONTROLLERS
 require('./scripts/controllers/indexCtrl.js');
 //SERVICE
-// require('./scripts/services/timerService.js');
+require('./scripts/services/encryptionService.js');
+require('./scripts/services/dataService.js');
