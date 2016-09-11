@@ -29,6 +29,16 @@ module.exports = function(app, connection, passport) {
       }
     });
   })
+  app.get('/getPost/:id', function(req, res) {
+    Post.findById(req.params.id, function(err, post) {
+      if (err) {
+        console.log(err)
+      }
+      else if (post) {
+        res.json(post)
+      }
+    });
+  })
 
   app.get('/userHistory/:user', function(req, res) {
     Post.find({username: req.params.user}, function(err, data) {

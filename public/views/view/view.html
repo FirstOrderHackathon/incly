@@ -19,7 +19,7 @@
             </div>
         </div> -->
 
-<div class="addtopmargin">
+<div class="addtopmargin" ng-hide="showMore">
 <div class="container">
 
     <div class="row">
@@ -34,7 +34,8 @@
                         <p>{{data.report.substring(0, 35) + '...'}}</p>
                     </div>
                     <div class="card-action">
-                        <a href="#">More...</a>
+
+                        <a ng-click="more(data._id)">More...</a>
                         <a class="waves-effect waves-light btn-small white fancybtn"><i class="material-icons left">thumb_up</i></a>
                         <a class="waves-effect waves-light btn-small white lighten-4 fancybtn"><i class="material-icons left">thumb_down</i></a>
                         <p>Votes:    1</p>
@@ -48,11 +49,14 @@
 </div>
 </div>
 
-<div class="container">
+<div class="container" style="margin-top:80px; text-align:center;" ng-show="showMore">
     <div class="card-panel">
-        <h2>This is the report heading...</h2>
+        <h2>{{postInput.user}}</h2>
+
+        <img style="width: 250px; height: 250px; margin: auto;"ng-src="{{postInput.imageUrl}}"/>
+
         <br><br>
-        <p>this is the report...</p>
-        <img ng-src="{{data.imageUrl}}">
-    </div>
-</div>
+        <p>{{postInput.report}}</p></div>
+    <a type="button" class="btn waves-effects waves-light darken-2 blue" ng-click="showMore = !showMore" style="margin-top: 20px; margin: auto; margin-bottom: 60px;">Close</a>
+
+  </div>

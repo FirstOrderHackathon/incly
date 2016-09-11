@@ -5,7 +5,13 @@ angular.module("incly")
     $scope.databaseLoad = databaseLoadForIndex.data;
   })
 
-
+$scope.showMore = false;
+$scope.more = function(id) {
+  dataService.getPostById(id, function(data) {
+    $scope.showMore = true;
+    $scope.postInput = data.data;
+  })
+}
 
 
 

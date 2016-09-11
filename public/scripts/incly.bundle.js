@@ -4755,7 +4755,13 @@ webpackJsonp([0],[
 	    $scope.databaseLoad = databaseLoadForIndex.data;
 	  })
 
-
+	$scope.showMore = false;
+	$scope.more = function(id) {
+	  dataService.getPostById(id, function(data) {
+	    $scope.showMore = true;
+	    $scope.postInput = data.data;
+	  })
+	}
 
 
 
@@ -4859,7 +4865,8 @@ webpackJsonp([0],[
 	  var getUrlSingleItem = "/post"; // Single Item Get
 	  var getUserForScopeUrl = "/userHistory";
 	  var signUpNewUser = "/signup";
-	  var loginUrl = "/login"
+	  var loginUrl = "/login";
+	  var getPost = "/getPost";
 
 	//Full Database Get
 	  this.getItems = function(callback) {
@@ -4869,6 +4876,11 @@ webpackJsonp([0],[
 	  //Single Users CRUD Requests
 	  this.getUser = function(username, callback) {
 	    $http.get(getUserForScopeUrl + "/" + username)
+	      .then(callback)
+	  };
+	  this.getPostById = function(id, callback) {
+	    var tempUrl = getPost + "/" + id;
+	    $http.get(tempUrl)
 	      .then(callback)
 	  };
 	  // New User
