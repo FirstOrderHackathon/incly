@@ -8,6 +8,7 @@ var dbInfo = require('./dbInfo.js');
 var passport = require('passport');
 var passportStrategy = require('./passport/passport.js');
 var path = require('path');
+var fs = require('fs');
 var db = require('./dbInfo.js');
 var mLabPath = db.url;
 var port = process.env.PORT || 8080;
@@ -21,7 +22,7 @@ app.use(express.static('public'))
 .use(bodyParser())
 .use(morgan('dev'))
 .use(passport.initialize())
-.use(busboy());
+.use(busboy())
 
 passportStrategy(passport);
 routes(app, connection, passport);

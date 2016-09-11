@@ -11,14 +11,43 @@ angular.module("incly")
 	}
 
 
+  $scope.userLoggedIn = false;
+  // TODO: ADD TRUE TO LOGGED IN UsER
+  $scope.newItemCreated = false;
+  // TODO: ADD TRUE TO NEW ITEM
+  $scope.userHistory = [{
+    "user": "bob",
+    "content": "123",
+    "voteCount": 5,
+    "imageUrl": "String",
+    "imageName": "name"}]
 
-	console.log(Toast.uploadFail)
 
-
-  $scope.newUserCreation = function(inputFromHtmlForUser) {
-    dataService.newUser(inputFromHtmlForUser, function (returnedNewUserJSON) {
-      $scope.user = returnedNewUserJSON;
+  $scope.signUp = function(loginData) {
+    dataService.newUser(loginData, function (data) {
+        $scope.userLoggedIn = true;
+        $scope.user = data;
     })
+  }
+
+  $scope.login = function(loginData) {
+    dataService.loginUser(loginData, function (data) {
+      $scope.userLoggedIn = true;
+      $scope.user = data
+
+    })
+  }
+
+  $scope.editEnabled = false;
+
+  $scope.userLogin = {
+    username: '',
+    password: ''
+  }
+
+  $scope.toggleEdit = function() {
+    $scope.editEnabled = !$scope.editEnabled;
+    $scope.userLoggedIn = !$scope.userLoggedIn;
   }
 
   $scope.getUserFromLogin = function(user) {
