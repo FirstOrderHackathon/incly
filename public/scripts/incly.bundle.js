@@ -8,6 +8,7 @@ webpackJsonp([0],[
 	//STATE CONFIG
 	__webpack_require__(3);
 	//CONTROLLERS
+	__webpack_require__(9);
 	__webpack_require__(5);
 	//SERVICE
 	__webpack_require__(6);
@@ -29,6 +30,12 @@ webpackJsonp([0],[
 	      url: '/',
 	      templateUrl: 'views/main/index.html',
 	      controller: 'indexCtrl'
+	    })
+
+	    .state('smile', {
+	      url: '/smile',
+	      templateUrl: 'views/main/index.html',
+	      controller: 'smileCtrl'
 	    })
 	}])
 	incly.run(['$state', function($state){}]);
@@ -4622,12 +4629,12 @@ webpackJsonp([0],[
 	'use strict';
 	angular.module("incly")
 	.controller("indexCtrl", function($scope, $interval, encryptionService) {
-	encryptionService.encryptionOfString("I love Code", function(encryptedString) {
-	  console.log(encryptedString);
-	  encryptionService.decryptionOfString(encryptedString, function(decryptedString) {
-	    console.log(decryptedString);
-	  })
-	});
+	  encryptionService.encryptionOfString("I love Code", function(encryptedString) {
+	    console.log(encryptedString);
+	    encryptionService.decryptionOfString(encryptedString, function(decryptedString) {
+	      console.log(decryptedString);
+	    })
+	  });
 	});
 
 
@@ -4733,6 +4740,23 @@ webpackJsonp([0],[
 
 
 
+	});
+
+
+/***/ },
+/* 8 */,
+/* 9 */
+/***/ function(module, exports) {
+
+	'use strict';
+	angular.module("incly")
+	.controller("smileCtrl", function($scope, $interval, encryptionService) {
+	encryptionService.encryptionOfString("I love Code", function(encryptedString) {
+	  console.log(encryptedString);
+	  encryptionService.decryptionOfString(encryptedString, function(decryptedString) {
+	    console.log(decryptedString);
+	  })
+	});
 	});
 
 
