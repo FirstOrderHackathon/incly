@@ -55,6 +55,15 @@
 	opacity: 1;
 	display: block;
 }
+
+.fancybtn {
+	text-align: center;
+	min-width: 2rem;
+	color: black !important;
+	padding: 10px 10px 10px 20px;
+	border-radius: 40%
+}
+
 #navSticky {
 	position: fixed; !important;
 	top: 0;
