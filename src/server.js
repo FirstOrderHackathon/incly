@@ -8,10 +8,11 @@ var dbInfo = require('./dbInfo.js');
 var passport = require('passport');
 var passportStrategy = require('./passport/passport.js');
 var path = require('path');
-
+var db = require('./dbInfo.js');
+var mLabPath = db.url;
 var port = process.env.PORT || 8080;
 
-mongoose.connect('mongodb://localhost:27017/incly');
+mongoose.connect(mLabPath);
 var connection = mongoose.connection;
 
 var app = express();
