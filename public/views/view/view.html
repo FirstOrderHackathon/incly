@@ -1,8 +1,26 @@
-<div class="container">
+<!-- <ul>
+<li><i class="material-icons prefix" id="special">search</i><input  ng-model="searchText.text" ng-keypress="startFilter = true;" class="search" id="srch"></li>
+</ul> -->
+<!-- TODO: search -->
+<div class="container" style="margin-top: 10%;">
 
     <div class="row">
-        <div class="col s4" ng-repeat="data in databaseLoad">
-          {{data}}
+        <!-- <div class="col s4" ng-hide="!startFilter" ng-repeat="data in databaseLoad track by $index | filter:searchText">
+            <div class="card small">
+                <div class="card-image">
+                    <img ng-src="{{data.imageUrl}}">
+                </div>
+                <div class="card-content">
+                    <div class="card-stacked">
+                        <p>{{data.report}}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">More...</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="col s4" ng-hide="startFilter" ng-repeat="data in databaseLoad track by $index">
             <div class="card small">
                 <div class="card-image">
                     <img ng-src="{{data.imageUrl}}">
