@@ -60,8 +60,9 @@
 	text-align: center;
 	min-width: 2rem;
 	color: black !important;
-	padding: 10px 10px 10px 20px;
-	border-radius: 40%
+	padding: 1px 1px 1px 1px;
+	border-radius: 40%;
+	margin-left: 15px;
 }
 
 #navSticky {
@@ -70,4 +71,8 @@
 	right: 0;
 	position: fixed;
 	z-index: 100;
+}
+
+.addtopmargin {
+	margin-top: 60px;
 }
