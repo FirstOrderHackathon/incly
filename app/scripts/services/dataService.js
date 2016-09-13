@@ -53,7 +53,7 @@ angular.module("incly")
   // login
   this.loginUser = function(userData, callback) {
     $http.post(loginUrl, userData)
-      .then(callback);
+      .then(callback, callback);
   }
 
 

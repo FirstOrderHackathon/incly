@@ -18,7 +18,7 @@ var connection = mongoose.connection;
 
 var app = express();
 
-app.use(express.static('public'))
+app.use('/', express.static('public'))
 .use(bodyParser())
 .use(morgan('dev'))
 .use(passport.initialize())

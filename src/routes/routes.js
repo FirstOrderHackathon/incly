@@ -4,9 +4,11 @@ var path = require('path');
 var fs = require('fs');
 
 module.exports = function(app, connection, passport) {
-  app.get('/', function(req, res) {
-    res.send('index.html')
-  })
+
+  // COMPLETED in server
+  // app.get('/', function(req, res) {
+  //   res.send('index.html')
+  // })
 
   app.get('/posts', function(req, res) {
     Post.find(function(err, posts) {
@@ -107,11 +109,7 @@ module.exports = function(app, connection, passport) {
   })
 
   app.post('/signup', function(req, res) {
-    console.log(req.body)
-    res.send(req.body.username);
-
     User.findOne({username: req.body.username}, function(err, doc) {
-      console.log(doc);
       if (doc == null) {
         var user = {
           username: req.body.username,
@@ -121,10 +119,10 @@ module.exports = function(app, connection, passport) {
           username: req.body.username,
           password: req.body.password
         });
-        res.json({"user": user});
+        res.json({"user": doc});
       }
       else {
-        res.send({"err":'Username taken'});
+        res.send('Username taken');
       }
     })
   })
