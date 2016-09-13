@@ -58,9 +58,25 @@ module.exports = function(app, connection, passport) {
   })
 
   app.post('/add', function(req, res) {
-    var report = {
-      // user: req.user.username
+    //PROVIDE DATA FOR ADD
+    if (req.textFile == false) {
+      // NO TEXT FILE ADDED
+      var report = {
+        user: req.user.username,
+        fileUpload: req.fileData
+      }
     }
+    else {
+      //TEXT FILE ADDED
+      var report = {
+        user: req.user.username,
+        report: req.textFile.content,
+        title: req.textFile.title,
+        fileUpload: req.fileData
+      }
+    }
+
+// TODO: Save Data to Server
 
     req.pipe(req.busboy);
 

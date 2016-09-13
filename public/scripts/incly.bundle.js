@@ -4644,6 +4644,44 @@ webpackJsonp([0],[
 	'use strict';
 	angular.module("incly")
 	.controller("smileCtrl", function($scope, $interval, encryptionService, dataService) {
+
+
+	//TODO Hook up this example with user in $scope.
+		$scope.information = {
+			title: "",
+			imageUrl: '',
+			content: ''
+		}
+
+		  $scope.userLoggedIn = false;
+			// TODO: ADD TRUE TO LOGGED IN UsER
+			$scope.newItemCreated = false;
+			// TODO: ADD TRUE TO NEW ITEM
+		  $scope.editEnabled = false;
+		  $scope.storyClick = false;
+
+		  $scope.userLogin = {
+		    username: '',
+		    password: ''
+		  }
+
+			function resetTextFile() {
+				$scope.textFile = {
+					title: '',
+					content: ''
+				}
+			}
+
+			resetTextFile();
+
+			function failedLoginOrSetup() {
+				$scope.userLogin = {
+			    username: '',
+			    password: ''
+		  	}
+			}
+
+
 	$scope.showIt = {"one": false, "two": false, "three": false}
 		var Toast = {
 		  "loginFailed": "Please try again, an incorrect username and/or password was entered.",
@@ -4654,15 +4692,6 @@ webpackJsonp([0],[
 			"success": "Success"
 		}
 
-	if ($scope.user == false) {
-	  $scope.userLoggedIn = false;
-	}
-	else {
-	  $scope.userLoggedIn = true;
-	}
-	  // TODO: ADD TRUE TO LOGGED IN UsER
-	  $scope.newItemCreated = false;
-	  // TODO: ADD TRUE TO NEW ITEM
 
 
 	  $scope.signUp = function(loginData) {
@@ -4675,7 +4704,7 @@ webpackJsonp([0],[
 				}
 				else {
 		      $scope.userLoggedIn = true;
-		      $scope.user = data
+		      $scope.user = data.data;
 				}
 	    })
 	  }
@@ -4690,40 +4719,62 @@ webpackJsonp([0],[
 				}
 				else {
 		      $scope.userLoggedIn = true;
-		      $scope.user = data
+		      $scope.user = data.data;
 					Materialize.toast(Toast.success, 2000) // 4000 is the duration of the toast
 					document.getElementsByClassName("toast")[0].style.backgroundColor = "green";
 				}
 	    })
 	  }
 
-
-	  $scope.userLoggedIn = false;
-	  $scope.textForm = false;
-	  $scope.editEnabled = false;
-	  $scope.storyClick = false;
-
-	  $scope.userLogin = {
-	    username: '',
-	    password: ''
-	  }
-		function failedLoginOrSetup() {
-			$scope.userLogin = {
-		    username: '',
-		    password: ''
-	  	}
+		$scope.formToggle = function(data) {
+			if (data === undefined || data === false) {
+				$scope.textForm = true;
+			}
+			else {
+				$scope.textForm = false;
+				resetTextFile();
+			}
 		}
+
+		$scope.uploadFiles = function(user, num, fileData, textFile) {
+
+			//TODO: save user data to user @ information {object} user.information.(put data here)
+			var sendData = {
+				user: "",
+				fileData: '',
+				textFile: ''
+			}
+			// Button WITHOUT textFiles
+			if (num == 0) {
+				sendData = {
+					user: user,
+					fileData: fileData,
+					textFile: false
+				}
+				//TODO Send DATA to Backend (BUSBOY)
+				// dataService.newItem(sendData, function(res) {
+				// 	console.log(res);
+				// }
+			}
+			// Button with textFiles
+			else {
+				sendData = {
+					user: user,
+					fileData: fileData,
+					textFile: textFile
+				}
+				//TODO Send DATA to Backend (BUSBOY)
+				// dataService.newItem(sendData, function(res) {
+				// 	console.log(res);
+				// }
+			}
+		}
+
 
 	  $scope.toggleEdit = function() {
 	    $scope.editEnabled = !$scope.editEnabled;
-
 	  }
 
-	  $scope.getUserFromLogin = function(user) {
-	    dataService.getUser(user, function(userData) {
-	      $scope.user = userData;
-	    })
-	  }
 
 	$scope.saveFileUploadOrText = function(fileToSave, userId) {
 	  dataService.saveItem(fileToSave, userId, function(returnedUserDataJSON) {

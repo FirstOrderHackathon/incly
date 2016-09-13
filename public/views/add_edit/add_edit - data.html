@@ -27,7 +27,7 @@
             <div class="file-field input-field">
                 <div class="btn blue darken-2">
                     <span>Select File or Folder</span>
-                    <input type="file" multiple ng-model="fileData">
+                    <input type="file" multiple>
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload one or more files">
@@ -38,10 +38,10 @@
                       <a class="btn waves-effect waves-light grey" name="NewDoc" ng-click="formToggle(textForm)"><span ng-hide="textForm">Add</span><span ng-hide="!textForm">Remove</span> Text</a>
                   <br ng-hide="textForm">
                   <br ng-hide="textForm">
-                      <button class="btn waves-effect waves-light green darken-1" ng-hide="textForm" name="Upload" ng-click="uploadFiles(userLogin.username, 0, fileData)">Upload</button>
+                      <button class="btn waves-effect waves-light green darken-1" ng-hide="textForm" name="Upload" ng-click="uploadFiles(user, 0, busboy)">Upload</button>
                   <br>
                   <br>
-                      <a class="btn waves-effect waves-light green lighten-1" name="Edit" ng-click="editEnabledBtn = !editEnabledBtn">Edit Existing File</a>
+                      <a class="btn waves-effect waves-light green lighten-1" name="Edit" ng-click="toggleEdit()">Edit Existing File</a>
                 </div>
             </div>
 
@@ -55,11 +55,11 @@
         <textarea style="height: 200px; resize: none;" name="report" id="report" cols="30" rows="10" ng-model="textFile.content"></textarea>
         <br>
         <br>
-      <button class="btn waves-effect waves-light green" name="Upload"  ng-click="uploadFiles(userLogin.username, 1, fileData, textFile)">Upload</button>
+      <button class="btn waves-effect waves-light green" name="Upload"  ng-click="uploadFiles(user, 1, busboy)">Upload</button>
     </div>
 </div>
-<!-- TODO what is this form for? -->
-<!-- <div class="container" ng-show="newItemCreated">
+
+<div class="container" ng-show="newItemCreated">
   <div class="card-panel">
     <label>Title</label>
     <input type="text" name="Title">
@@ -68,17 +68,17 @@
     <br>
     <button class="btn waves-effect waves-light green" name="Upload" type="submit">Upload</button>
   </div>
-</div> -->
+</div>
 </form>
 
 
 <!-- This is the table that users who have logged in will use to preform CRUD actions -->
-<div class="container"  ng-repeat="data in user.information track by $index" ng-show="editEnabledBtn">
+<div class="container"  ng-repeat="data in userHistory track by $index" ng-show="editEnabled">
   <div class="card-panel">
     <table class="highlight">
             <thead>
               <tr>
-                  <th data-field="fileName">{{data.title}}</th>
+                  <th data-field="fileName">{{data.imageName}}</th>
               </tr>
             </thead>
 
